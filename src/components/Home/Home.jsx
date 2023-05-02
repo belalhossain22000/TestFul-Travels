@@ -22,7 +22,7 @@ const Home = () => {
       <FeaturedRecipesSection></FeaturedRecipesSection>
       <ChefTips></ChefTips>
 
-      <h1>thiis is home page</h1>
+      
     </div>
   );
 };

@@ -24,8 +24,9 @@ export const router=createBrowserRouter([
                 element:<Blog></Blog>
             },
             {
-                path:'/cheprecipes',
-                element:<ChefRecipes></ChefRecipes>
+                path:'/chefrecipes/:id',
+                element:<ChefRecipes></ChefRecipes>,
+                // loader:({params}) =>fetch(`http://localhost:5000/allData/${params.id}`)
             },
             {
                 path:'/register',

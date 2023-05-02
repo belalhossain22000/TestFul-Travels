@@ -11,7 +11,7 @@ const Banner = () => {
       />
       <div className="absolute inset-0 bg-gray-900 opacity-75"></div>
       <div className="container relative z-10 flex items-center py-32">
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <div className=" w-full md:w-1/2 text-center md:text-left">
           <h1 className="text-5xl font-bold text-white mb-6">
             Welcome to our Chef Website
           </h1>
