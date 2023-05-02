@@ -7,6 +7,7 @@ import ChefRecipes from "../ChefRecipes";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import LoginPage from "../LoginPage/LoginPage";
 import Registration from "../Registation/Registration ";
+import PrivetRout from "../PrivetRout";
 
 
 export const router=createBrowserRouter([
@@ -25,8 +26,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/chefrecipes/:id',
-                element:<ChefRecipes></ChefRecipes>,
-                // loader:({params}) =>fetch(`http://localhost:5000/allData/${params.id}`)
+                element:<PrivetRout><ChefRecipes></ChefRecipes></PrivetRout>,
             },
             {
                 path:'/register',

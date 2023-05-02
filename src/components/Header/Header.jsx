@@ -94,16 +94,7 @@ const Header = () => {
               Blog
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive, isPending }) =>
-                isActive ? "bg-blue-500" : isPending ? "pending" : ""
-              }
-            >
-              uknNown
-            </NavLink>
-          </li>
+          
         </ul>
       </div>
       <div className="navbar-end ">

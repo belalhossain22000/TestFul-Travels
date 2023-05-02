@@ -15,6 +15,15 @@ const Registration = () => {
   const handleRegistration = (event) => {
     event.preventDefault();
     console.log(email, name, password, photo, confirmPassword);
+    setError('')
+    if(password!==confirmPassword){
+      setError('passworn dosent matching')
+      return
+    }
+    else if(password.length!==6){
+      setError('password is too short it should be 6 characters')
+      return
+    }
 
     if ((name, email, password)) {
       registerUser(email, password)
@@ -28,15 +37,19 @@ const Registration = () => {
               // ...
             })
             .catch((error) => {
+              setError(error.message)
               console.log(error.message)
             });
 
           console.log(result.user);
+          
         })
         .catch((err) => {
           console.log(err.message);
+          setError(err.message);
         });
     }
+      
   };
 
   return (
@@ -124,7 +137,10 @@ const Registration = () => {
                 </button>
               </div>
             </form>
-            <p className="mb-5  ms-4 ">
+            <p className="mb-5  ms-4 text-red-600 ">
+            {error}
+            </p>
+            <p className="mb-5  ms-4  ">
               Allready have an account?
               <Link className="btn btn-link" to="/login">
                 Login
