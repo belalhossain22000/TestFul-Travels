@@ -1,24 +1,61 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
+  const { registerUser,auth } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleRegistration = (event) => {
+    event.preventDefault();
+    console.log(email, name, password, photo, confirmPassword);
+
+    if ((name, email, password)) {
+      registerUser(email, password)
+        .then((result) => {
+          updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+            })
+            .catch((error) => {
+              console.log(error.message)
+            });
+
+          console.log(result.user);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200 mb-24 mt-12">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold mb-6">
-              {" "}
               Please Registration now!!!
             </h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form  className="card-body">
+            <form className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
+                  onChange={(e) => setName(e.target.value)}
                   name="name"
                   type="text"
                   placeholder="Name"
@@ -31,6 +68,7 @@ const Registration = () => {
                   <span className="label-text">Photo url</span>
                 </label>
                 <input
+                  onChange={(e) => setPhoto(e.target.value)}
                   name="photo"
                   type="text"
                   placeholder="Photo url"
@@ -43,6 +81,7 @@ const Registration = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
                   type="email"
                   placeholder="email"
@@ -55,6 +94,7 @@ const Registration = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   name="password"
                   placeholder="password"
@@ -67,6 +107,7 @@ const Registration = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   type="password"
                   name="confirmPassword"
                   placeholder="password"
@@ -75,7 +116,12 @@ const Registration = () => {
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button
+                  onClick={handleRegistration}
+                  className="btn btn-primary"
+                >
+                  Register
+                </button>
               </div>
             </form>
             <p className="mb-5  ms-4 ">

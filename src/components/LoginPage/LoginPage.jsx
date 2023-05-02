@@ -1,6 +1,41 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const LoginPage = () => {
+  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    if ((email, password)) {
+      loginUser(email, password)
+        .then((result) => {
+          console.log(result.user);
+          // navigate("/");
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
+  };
+  const googleLogins = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error.message));
+  };
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error.message));
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -9,12 +44,13 @@ const LoginPage = () => {
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form  className="card-body">
+            <form className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
                   type="email"
                   placeholder="email"
@@ -27,6 +63,7 @@ const LoginPage = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                  onChange={(e) => setPassword(e.target.value)}
                   name="password"
                   type="password"
                   placeholder="password"
@@ -40,7 +77,22 @@ const LoginPage = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button onClick={handleLogin} className="btn btn-primary">
+                  Login
+                </button>
+                <br />
+                <div className="flex gap-3 items-center justify-center">
+                  <button onClick={googleLogins} className="btn btn-primary">
+                    google
+                  </button>
+                  <br />
+                  <button
+                    onClick={handleGithubLogin}
+                    className="btn btn-primary"
+                  >
+                    Github
+                  </button>
+                </div>
               </div>
             </form>
             <p className="mb-5  ms-4 ">
