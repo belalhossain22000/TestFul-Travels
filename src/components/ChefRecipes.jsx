@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import RecipesDetails from "./RecipesDetails";
 
 const ChefRecipes = () => {
   const { id } = useParams();
-  console.log(id);
 
   const [details, setDetails] = useState([]);
 
@@ -18,10 +18,8 @@ const ChefRecipes = () => {
   if (matcheddetails) {
     Mdetails = matcheddetails;
   }
-  const {bio,experience,likes,name,numRecipes,picture,recipes
-  }=Mdetails
-  
-  console.log(recipes);
+  const { recipes } = Mdetails;
+
   return (
     <div>
       <div className=" chef-profile bg-white shadow-lg rounded-lg overflow-hidden">
@@ -45,15 +43,11 @@ const ChefRecipes = () => {
             </div>
           </div>
         </div>
-        <div className=" m-11 card lg:card-side bg-base-100 shadow-xl">
-          <figure>
-            <img src={Mdetails.picture} alt="Album" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">New album is released!</h2>
-            <p>Click the button to listen on Spotiwhy app.</p>
-            
-          </div>
+
+        <div className="card-body">
+          {recipes?.map((recipe) => (
+            <RecipesDetails key={recipe.name} recipe={recipe}></RecipesDetails>
+          ))}
         </div>
       </div>
     </div>
