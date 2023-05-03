@@ -8,7 +8,7 @@ const Home = () => {
 //   const [chefss, setChefss] = useState();
 
 //   useEffect(() => {
-//     fetch("http://localhost:5000/allData")
+//     fetch("https://myapp-belalhossain22000.vercel.app/allData")
 //       .then((res) => res.json())
 //       .then((data) => {
 //         console.log(data);

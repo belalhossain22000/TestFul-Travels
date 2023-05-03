@@ -5,7 +5,7 @@ const ChefTips = () => {
 
   const [chefTips,setChefTips]= useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/chefTips')
+    fetch('https://myapp-belalhossain22000.vercel.app/chefTips')
     .then(res => res.json())
     .then(data=>setChefTips(data))
   },[])

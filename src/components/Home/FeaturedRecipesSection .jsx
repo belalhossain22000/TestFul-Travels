@@ -4,7 +4,7 @@ import RecipeCard from "./RecipeCard ";
 const FeaturedRecipesSection = () => {
   const [featureRecipes, setFeatureRecipes] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/feature")
+    fetch("https://myapp-belalhossain22000.vercel.app/feature")
       .then((res) => res.json())
       .then((data) => setFeatureRecipes(data));
   }, []);
