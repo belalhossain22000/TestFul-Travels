@@ -1,14 +1,24 @@
-import React, { lazy, Suspense } from "react";
-
+import React from "react";
+import LazyLoad from "react-lazy-load";
 import { Link, useNavigate } from "react-router-dom";
 import { FaHandPointRight } from "react-icons/fa";
 
 const ChefCard = ({ chef }) => {
   const navigate = useNavigate();
+
   return (
     <div>
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <img src={chef.picture} alt={chef.name} className="w-full" />
+        <LazyLoad
+          height={300}
+          width={400}
+          threshold={0.95}
+          onContentVisible={() => {
+            console.log("loaded!");
+          }}
+        >
+          <img src={chef.picture} alt={chef.name} className="w-full" />
+        </LazyLoad>
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{chef.name}</div>
           <p className="text-gray-700 text-base mb-2">
