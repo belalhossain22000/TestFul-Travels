@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { FaHandPointRight, FaRegHeart } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
 
 const RecipesDetails = ({ recipe }) => {
   const [isClicked, setIsClicked] = useState(false);
@@ -21,16 +24,19 @@ const RecipesDetails = ({ recipe }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-        <h3><span className="font-bold">ingredient</span> :
+        <h3>
+          <span className="font-bold">ingredient</span> :
           {ingredients.map((ingredient, index) => (
             <p key={index}>{ingredient}</p>
           ))}
         </h3>
-        <p>
-          <span className="font-bold">Rating</span> : {rating}
-        </p>
+
         <p>
           <span className="font-bold">Chooking Method</span> : {method}
+        </p>
+
+        <p className="flex items-center gap-3">
+          <span className=" "><Rating style={{ maxWidth: 150 }} value={Math.round(rating)} readOnly /></span>  {rating}
         </p>
         <div className="card-actions justify-end">
           <button
