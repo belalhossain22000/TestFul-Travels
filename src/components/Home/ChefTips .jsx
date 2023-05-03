@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TipCard from "./TipCard";
 
 const ChefTips = () => {
+
+  const [chefTips,setChefTips]= useState([]);
+  useEffect(()=>{
+    fetch('http://localhost:5000/chefTips')
+    .then(res => res.json())
+    .then(data=>setChefTips(data))
+  },[])
   const tips = [
     {
       id: 1,
@@ -36,10 +43,10 @@ const ChefTips = () => {
   ];
   return (
     <div>
-      <section className="container mx-auto py-12">
+      <section className="container mx-auto pb-20">
         <h2 className="text-3xl font-bold mb-6">Chef Tips</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {tips.map((tip) => (
+          {chefTips.map((tip) => (
             <TipCard key={tip.id} tip={tip} />
           ))}
         </div>

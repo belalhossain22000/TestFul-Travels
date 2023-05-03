@@ -66,7 +66,7 @@ const Registration = () => {
             });
 
           console.log(result.user);
-          navigate(from ,{replace:true});
+          navigate("/login");
           
         })
         .catch((err) => {
