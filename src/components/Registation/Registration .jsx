@@ -1,9 +1,14 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
+
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+
   const { registerUser,auth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -42,6 +47,7 @@ const Registration = () => {
             });
 
           console.log(result.user);
+          navigate(from ,{replace:true});
           
         })
         .catch((err) => {

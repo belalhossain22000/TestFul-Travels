@@ -47,7 +47,7 @@ const LoginPage = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold">Login to Testful Travels</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body">
@@ -84,21 +84,18 @@ const LoginPage = () => {
               </div>
               <div className="form-control mt-6">
                 <button onClick={handleLogin} className="btn btn-primary">
-                  Login
+                  Login 
+                </button>
+                <p className="text-center my-9 border-b-2 border-t-2 ">or</p>
+                <button onClick={googleLogins}  className="btn btn-primary">
+                Login with google
                 </button>
                 <br />
-                <div className="flex gap-3 items-center justify-center">
-                  <button onClick={googleLogins} className="btn btn-primary">
-                    google
-                  </button>
-                  <br />
-                  <button
-                    onClick={handleGithubLogin}
-                    className="btn btn-primary"
-                  >
-                    Github
-                  </button>
-                </div>
+                <button  onClick={handleGithubLogin} className="btn btn-primary">
+                login with Github
+                </button>
+                <br />
+                
               </div>
             </form>
             <p className="mb-5  ms-4 ">
