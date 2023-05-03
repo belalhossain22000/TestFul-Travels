@@ -7,7 +7,7 @@ const Banner = () => {
       <figure>
         <img
           className="w-[700px]"
-          src="https://thumbs.dreamstime.com/z/happy-chef-pointing-copy-space-young-83942019.jpg"
+          src="https://img.freepik.com/free-photo/profession-looking-telephone-handsome-serious_1134-1068.jpg?w=996&t=st=1683138679~exp=1683139279~hmac=9fbd1b43a8fcc87f761d7ad064bec9947ba0ee0f01124c505c5967568cc01a5d"
           alt="Album"
         />
       </figure>
