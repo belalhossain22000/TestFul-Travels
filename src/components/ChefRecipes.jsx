@@ -37,7 +37,7 @@ const ChefRecipes = () => {
             <p>{bio}</p>
             <p className="flex items-center gap-4"> <span className="font-bold">likes</span> : <FaHandPointRight></FaHandPointRight>{likes}</p>
             <p> <span className="font-bold">Number of recipes</span> : {numRecipes}</p>
-            <p> <span className="font-bold">Experiences</span> :{experience}</p>
+            <p> <span className="font-bold">Experiences</span> :{experience} years </p>
           </div>
         </div>
 

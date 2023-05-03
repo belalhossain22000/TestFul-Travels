@@ -9,7 +9,7 @@ const RecipesDetails = ({ recipe }) => {
 
   const handleClick = () => {
     setIsClicked(true);
-    notify()
+    notify();
   };
 
   const { name, ingredients, method, rating, foodimg } = recipe;
@@ -21,18 +21,15 @@ const RecipesDetails = ({ recipe }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-        {ingredients.map((ingredient, index) => (
-          <p key={index}>
-            {" "}
-            <span className="font-bold">ingredient</span> : {ingredient}
-          </p>
-        ))}
+        <h3><span className="font-bold">ingredient</span> :
+          {ingredients.map((ingredient, index) => (
+            <p key={index}>{ingredient}</p>
+          ))}
+        </h3>
         <p>
-          {" "}
           <span className="font-bold">Rating</span> : {rating}
         </p>
         <p>
-          {" "}
           <span className="font-bold">Chooking Method</span> : {method}
         </p>
         <div className="card-actions justify-end">
