@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ChefCard from "./ChefCard ";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const ChefSection = () => {
-    const [chefs,setChefses]=useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/allData')
-        .then(res => res.json())
-        .then(data => {
-            
-            return setChefses(data)
-        })
-    },[])
+  const { loading, setLoading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center ">
+        <button className="btn btn-square loading "></button>
+      </div>
+    );
+  }
+  const [chefs, setChefses] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/allData")
+      .then((res) => res.json())
+      .then((data) => {
+        
+        return setChefses(data);
+      });
+  }, []);
+  setLoading(false);
 
   return (
     <div className="">

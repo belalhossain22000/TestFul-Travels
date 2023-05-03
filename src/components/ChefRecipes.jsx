@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipesDetails from "./RecipesDetails";
+import { FaHandPointRight } from 'react-icons/fa';
+
 
 const ChefRecipes = () => {
   const { id } = useParams();
@@ -18,33 +20,28 @@ const ChefRecipes = () => {
   if (matcheddetails) {
     Mdetails = matcheddetails;
   }
-  const { recipes } = Mdetails;
+  const { recipes ,picture,name,bio,likes,numRecipes,experience} = Mdetails;
 
   return (
     <div>
-      <div className=" chef-profile bg-white shadow-lg rounded-lg overflow-hidden">
-        <div
-          className="chef-banner h-64 bg-cover bg-center flex flex-col justify-end px-6 pb-12"
-          style={{ backgroundImage: `url(${Mdetails.picture})` }}
-        >
-          <h2 className="text-4xl font-bold text-white mb-2">
-            {Mdetails.name}
-          </h2>
-          <p className="text-xl text-white font-semibold">{Mdetails.bio}</p>
-          <div className="chef-stats flex justify-between mt-4">
-            <div className="likes text-lg font-medium">
-              {Mdetails.likes} Likes
-            </div>
-            <div className="num-recipes text-lg font-medium">
-              {Mdetails.numRecipes} Recipes
-            </div>
-            <div className="experience text-lg font-medium">
-              {Mdetails.experience} Years Experience
-            </div>
+      <div className=" chef-profile mt-9 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="card lg:card-side bg-base-100 shadow-xl">
+          <figure>
+            <img
+              src={picture}
+              alt="Album"
+            />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">{name}</h2>
+            <p>{bio}</p>
+            <p className="flex items-center gap-4"> <span className="font-bold">likes</span> : <FaHandPointRight></FaHandPointRight>{likes}</p>
+            <p> <span className="font-bold">Number of recipes</span> : {numRecipes}</p>
+            <p> <span className="font-bold">Experiences</span> :{experience}</p>
           </div>
         </div>
 
-        <div className="card-body">
+        <div className="card-body  md:grid grid-cols-3">
           {recipes?.map((recipe) => (
             <RecipesDetails key={recipe.name} recipe={recipe}></RecipesDetails>
           ))}

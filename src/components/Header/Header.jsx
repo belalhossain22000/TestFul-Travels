@@ -56,16 +56,6 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive, isPending }) =>
-                  isActive ? "bg-blue-500" : isPending ? "pending" : ""
-                }
-              >
-                uknown
-              </NavLink>
-            </li>
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -94,13 +84,15 @@ const Header = () => {
               Blog
             </NavLink>
           </li>
-          
         </ul>
       </div>
       <div className="navbar-end ">
         {user ? (
           <div>
-            <div data-tip={user.displayName} className="tooltip  tooltip-bottom">
+            <div
+              data-tip={user.displayName}
+              className="tooltip  tooltip-bottom"
+            >
               <img
                 className="tooltip rounded-full w-8 h-8 mr-4  "
                 src={user.photoURL}
