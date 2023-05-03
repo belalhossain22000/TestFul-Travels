@@ -21,7 +21,25 @@ const Registration = () => {
     event.preventDefault();
     console.log(email, name, password, photo, confirmPassword);
     setError('')
-    if(password!==confirmPassword){
+
+    if(!name){
+      setError('please enter your name')
+      return
+    }
+   else if(!email){
+      setError('please enter a valid email address')
+      return
+    }
+   else if(!/[^\s@]+@[^\s@]+\.[^\s@]+/.test(email)){
+      setError('please enter a valid email address')
+      return
+    }
+   else if(!password){
+      setError('please enter minimum  6 digit password')
+      return
+    }
+   
+    else if(password!==confirmPassword){
       setError('passworn dosent matching')
       return
     }
@@ -29,6 +47,7 @@ const Registration = () => {
       setError('password is too short it should be 6 characters')
       return
     }
+    
 
     if ((name, email, password)) {
       registerUser(email, password)
@@ -63,8 +82,8 @@ const Registration = () => {
       <div className="hero min-h-screen bg-base-200 mb-24 mt-12">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold mb-6">
-              Please Registration now!!!
+            <h1 className=" text-5xl font-bold my-5">
+              Please Registration Testful Teravels!
             </h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

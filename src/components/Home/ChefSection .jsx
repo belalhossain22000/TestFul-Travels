@@ -13,8 +13,8 @@ const ChefSection = () => {
     },[])
 
   return (
-    <div>
-      <div className="container mx-auto py-12 max-w-[100%] ">
+    <div className="">
+      <div className="container mx-auto py-12  ">
         <h2 className=" text-3xl font-bold mb-6 bo">Meet Our Chefs</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {chefs.map((chef) => (
