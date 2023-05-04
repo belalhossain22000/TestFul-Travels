@@ -18,7 +18,7 @@ const RecipesDetails = ({ recipe }) => {
   const { name, ingredients, method, rating, foodimg } = recipe;
   console.log(foodimg);
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-96 bg-base-100 shadow-xl relative">
       <figure>
         <img src={foodimg} alt="Shoes" />
       </figure>
@@ -35,7 +35,7 @@ const RecipesDetails = ({ recipe }) => {
           <span className="font-bold">Chooking Method</span> : {method}
         </p>
 
-        <p className="flex items-center gap-3">
+        <p className="flex items-center gap-3 absolute bottom-10 ">
           <span className=" ">
             <Rating
               style={{ maxWidth: 150 }}
