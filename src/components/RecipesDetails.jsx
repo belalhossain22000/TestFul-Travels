@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { FaHandPointRight, FaRegHeart } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Rating } from '@smastrom/react-rating'
+import { Rating } from "@smastrom/react-rating";
 
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
 
 const RecipesDetails = ({ recipe }) => {
   const [isClicked, setIsClicked] = useState(false);
@@ -36,7 +36,14 @@ const RecipesDetails = ({ recipe }) => {
         </p>
 
         <p className="flex items-center gap-3">
-          <span className=" "><Rating style={{ maxWidth: 150 }} value={Math.round(rating)} readOnly /></span>  {rating}
+          <span className=" ">
+            <Rating
+              style={{ maxWidth: 150 }}
+              value={Math.round(rating)}
+              readOnly
+            />
+          </span>{" "}
+          {rating}
         </p>
         <div className="card-actions justify-end">
           <button

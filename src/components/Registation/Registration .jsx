@@ -142,13 +142,13 @@ const Registration = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text"> Confirm Password</span>
                 </label>
                 <input
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   type="password"
                   name="confirmPassword"
-                  placeholder="password"
+                  placeholder="confirm password"
                   className="input input-bordered"
                   required
                 />

@@ -40,8 +40,9 @@ const ChefRecipes = () => {
             <p> <span className="font-bold">Experiences</span> :{experience} years </p>
           </div>
         </div>
-
+        <h1 className="font-bold text-4xl w-[95%] mx-auto my-10">Chef Food details</h1>
         <div className="card-body  md:grid grid-cols-3">
+         
           {recipes?.map((recipe) => (
             <RecipesDetails key={recipe.name} recipe={recipe}></RecipesDetails>
           ))}
