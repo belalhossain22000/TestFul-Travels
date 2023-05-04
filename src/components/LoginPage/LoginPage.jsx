@@ -47,7 +47,7 @@ const LoginPage = () => {
   };
 
   const handlePassordReset = () =>{
-
+      setError('')
     sendPasswordResetEmail(auth, email)
   .then(() => {
     alert('Password reset email sent')
