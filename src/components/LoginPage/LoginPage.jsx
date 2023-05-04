@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const LoginPage = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
+  const { loginUser, googleLogin, githubLogin,auth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -45,6 +46,21 @@ const LoginPage = () => {
       .catch((error) => console.log(error.message));
   };
 
+  const handlePassordReset = () =>{
+
+    sendPasswordResetEmail(auth, email)
+  .then(() => {
+    alert('Password reset email sent')
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setError(errorMessage);
+    // ..
+  });
+
+  }
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -80,7 +96,7 @@ const LoginPage = () => {
                   required
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <a onClick={handlePassordReset} href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
                   
