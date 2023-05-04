@@ -96,7 +96,7 @@ const LoginPage = () => {
                   required
                 />
                 <label className="label">
-                  <a onClick={handlePassordReset} href="#" className="label-text-alt link link-hover">
+                  <a onClick={handlePassordReset} href="#" className="label-text-alt link link-hover text-blue-700">
                     Forgot password?
                   </a>
                   
@@ -121,7 +121,7 @@ const LoginPage = () => {
               </div>
             </form>
             <p className="mb-5  ms-4 ">
-              Don't have an account ?{" "}
+              Don't have an account ?
               <Link className="btn btn-link" to="/register">
                 Register
               </Link>
