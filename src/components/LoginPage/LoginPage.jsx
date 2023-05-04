@@ -6,14 +6,14 @@ import { sendPasswordResetEmail } from "firebase/auth";
 const LoginPage = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-  const { loginUser, googleLogin, githubLogin,auth } = useContext(AuthContext);
+  const { loginUser, googleLogin, githubLogin, auth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
- 
+
   const handleLogin = (event) => {
-    setError('')
+    setError("");
     event.preventDefault();
     if ((email, password)) {
       loginUser(email, password)
@@ -46,27 +46,28 @@ const LoginPage = () => {
       .catch((error) => console.log(error.message));
   };
 
-  const handlePassordReset = () =>{
-      setError('')
+  const handlePassordReset = () => {
+    setError("");
     sendPasswordResetEmail(auth, email)
-  .then(() => {
-    alert('Password reset email sent')
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    setError(errorMessage);
-    // ..
-  });
-
-  }
+      .then(() => {
+        alert("Password reset email sent");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage);
+        // ..
+      });
+  };
 
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold my-5">Login to Testful Travels</h1>
+            <h1 className="text-5xl font-bold my-5">
+              Login to Testful Travels
+            </h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body">
@@ -96,14 +97,15 @@ const LoginPage = () => {
                   required
                 />
                 <label className="label">
-                  <a onClick={handlePassordReset} href="#" className="label-text-alt link link-hover text-blue-700">
+                  <a
+                    onClick={handlePassordReset}
+                    href="#"
+                    className="label-text-alt link link-hover text-blue-700"
+                  >
                     Forgot password?
                   </a>
-                  
-
                 </label>
                 <p className="mb-5  ms-4 text-red-600 ">{error}</p>
-
               </div>
               <div className="form-control mt-6">
                 <button onClick={handleLogin} className="btn btn-primary">

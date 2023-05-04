@@ -90,12 +90,12 @@ const Header = () => {
         {user ? (
           <div>
             <div
-              data-tip={user.displayName}
+              data-tip={user && user.displayName}
               className="tooltip  tooltip-bottom"
             >
               <img
                 className="tooltip rounded-full w-8 h-8 mr-4  "
-                src={user.photoURL}
+                src={user && user.photoURL}
                 alt=""
               />
             </div>
