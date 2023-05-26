@@ -6,6 +6,7 @@ const ChefSection = () => {
   const { loading, setLoading } = useContext(AuthContext);
 
   if (loading) {
+    
     return (
       <div className="flex justify-center items-center ">
         <button className="btn btn-square loading "></button>

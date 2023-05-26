@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Footer = () => {
+  
     return (
         <div>
             <footer className="footer footer-center p-10 bg-primary text-primary-content">
